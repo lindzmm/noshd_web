@@ -1,0 +1,24 @@
+<h2>Sign Up</h2>
+<div class="row">
+  <div class="col-sm-4">
+    <label>Username:</label><br />
+    <input type="text" name="register-username" [(ngModel)]="user.username">
+    <span *ngFor="let error of registerService.errors.username"><br />
+      {{ error }}</span></div>
+  <div class="col-sm-4">
+    <label>Email:</label><br />
+    <input type="text" name="register-email" [(ngModel)]="user.email">
+    </div>
+  <div class="col-sm-4">
+  <label>Password:</label><br />
+  <input type="password" name="register-password" [(ngModel)]="user.password">
+  <span *ngFor="let error of registerService.errors.password"><br />
+    {{ error }}</span>
+</div>
+  <div class="col-sm-4">
+    <button (click)="register()" class="btn btn-primary">Sign Up</button>
+  </div>
+  <div class="col-sm-12">
+    <span *ngFor="let error of registerService.errors.non_field_errors">{{ error }}<br /></span>
+  </div>
+</div>
