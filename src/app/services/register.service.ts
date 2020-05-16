@@ -11,7 +11,9 @@ export class RegisterService {
   private httpOptions: any;
   // the username of the logged in user
   public username: string;
-
+  public success: boolean;
+  private registeruser: string;
+  private userjson: JSON;
   // error messages received from the login attempt
   public errors: any = [];
   constructor(private http: HttpClient) {
@@ -20,12 +22,21 @@ export class RegisterService {
   }; }
 
   public register(user) {
-    this.http.post(`${this.URL}/api/users`, user).subscribe(
+    console.log(user);
+    this.registeruser = '{\"user\":{ \"email\": \"' + user.email + '\", \"username\": \"'
+      + user.username + '\", \"password\": \"' + user.password + '\"}}';
+    this.userjson = JSON.parse(this.registeruser);
+
+    console.log(this.userjson);
+
+    this.http.post(`${this.URL}/noshd/register/`, this.userjson).subscribe(
       data => {
         console.log('register user successful');
+        this.success = true;
       },
       err => {
         this.errors = err['error'];
+        this.success = false;
       }
     );
   }
