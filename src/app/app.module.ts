@@ -8,13 +8,15 @@ import {LoginService} from './services/login.service';
 import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FeedComponent } from './feed/feed.component';
+import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    FeedComponent
+    FeedComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,

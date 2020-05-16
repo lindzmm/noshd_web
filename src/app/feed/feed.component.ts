@@ -18,6 +18,10 @@ export class FeedComponent implements OnInit {
     }
   }
 
+  newPost() {
+    this.router.navigate(['/newpost']);
+  }
+
   logout() {
     this.loginService.logout();
     this.router.navigate(['/login']);
