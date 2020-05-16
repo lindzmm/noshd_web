@@ -22,3 +22,5 @@
     <span *ngFor="let error of registerService.errors.non_field_errors">{{ error }}<br /></span>
   </div>
 </div>
+<div class="row" *ngIf="registerService.success" [routerLink]="login()">Logging in user...</div>
+<div class="row" *ngIf="loginService.token" [routerLink]="goToHome()">Going to home...</div>

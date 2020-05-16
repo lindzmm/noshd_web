@@ -7,12 +7,14 @@ import {FormsModule} from '@angular/forms';
 import {LoginService} from './services/login.service';
 import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FeedComponent } from './feed/feed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,

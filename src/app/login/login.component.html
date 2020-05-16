@@ -21,7 +21,7 @@
     <span *ngFor="let error of loginService.errors.non_field_errors">{{ error }}<br /></span>
   </div>
 </div>
-<div class="row" *ngIf="loginService.token">
+<div class="row" *ngIf="loginService.token" [routerLink]="goToHome()">
   <div class="col-sm-12">You are logged in as {{ loginService.username }}.<br />
     Token Expires: {{ loginService.tokenExpires }}<br />
     <button (click)="refreshToken()" class="btn btn-primary">Refresh Token</button>

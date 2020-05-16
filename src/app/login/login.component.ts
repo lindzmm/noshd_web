@@ -23,6 +23,17 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.login({username: this.user.username, password: this.user.password});
+    if (this.loginService.token) {
+      console.log('token aquired');
+      this.router.navigate(['/home']);
+    }
+  }
+
+  goToHome() {
+    if (this.loginService.token) {
+      console.log('token aquired');
+      this.router.navigate(['/home']);
+    }
   }
 
   register() {
