@@ -1,0 +1,10 @@
+<button mat-button (click)="goToHome()">Home</button>
+<button mat-button (click)="goToDiscover()">Discover</button>
+<button mat-button (click)="goToProfile()">Profile</button>
+<div>
+  <h2>Users:</h2>
+  <div *ngFor="let user of userList">
+    <p *ngIf="!isCurrentUser(user)">{{user.username}} <button *ngIf="!isFollowing(user)" (click)="follow(user)">Follow</button> <button *ngIf="isFollowing(user)" (click)="unfollow(user)">Unfollow</button> <br /></p>
+  </div>
+</div>
+

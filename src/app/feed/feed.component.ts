@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../services/login.service';
 import {Router} from '@angular/router';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-feed',
@@ -8,8 +9,10 @@ import {Router} from '@angular/router';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
-
+  followerList = new Array<string>();
+  followingList = new Array<string>();
   constructor(private loginService: LoginService,
+              private userService: UserService,
               private router: Router) { }
 
   ngOnInit() {
@@ -25,6 +28,14 @@ export class FeedComponent implements OnInit {
   logout() {
     this.loginService.logout();
     this.router.navigate(['/login']);
+  }
+
+  goToProfile() {
+    this.router.navigate(['/profile']);
+  }
+
+  goToDiscover() {
+    this.router.navigate(['/discover']);
   }
 
 }

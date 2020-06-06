@@ -1,0 +1,10 @@
+<button mat-button (click)="goToHome()">Home</button>
+<button mat-button (click)="goToDiscover()">Discover</button>
+<button mat-button >Profile</button>
+<div>
+  <h2>Following:</h2>
+  <p *ngFor="let following of followingList">{{following}} <br /></p>
+  <h2>Followers:</h2>
+  <p *ngFor="let follower of followerList">{{follower}} <br /></p>
+</div>
+

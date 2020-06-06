@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../services/login.service';
 import {NewPostService} from '../services/new-post.service';
 import {throwError} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-post',
@@ -12,7 +13,8 @@ export class NewPostComponent implements OnInit {
 
   public post: any;
   constructor(private loginService: LoginService,
-              private newPostService: NewPostService) { }
+              private newPostService: NewPostService,
+              private router: Router) { }
 
   ngOnInit() {
     this.post = {
@@ -35,6 +37,18 @@ export class NewPostComponent implements OnInit {
         return throwError(error);
       }
     );
+  }
+
+  goToDiscover() {
+    this.router.navigate(['/discover']);
+  }
+
+  goToHome() {
+    this.router.navigate(['/home']);
+  }
+
+  goToProfile() {
+    this.router.navigate(['/profile']);
   }
 
 }
