@@ -11,8 +11,7 @@ export class UserService {
   constructor(private http: HttpClient,
               private loginService: LoginService ) { }
 
-
-  getFollowers(username) {
+  getUser(username) {
     const appHeaders = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -20,7 +19,6 @@ export class UserService {
       })
     };
     return this.http.get(`${this.URL}/api/user/` + username, appHeaders);
-
   }
 
   getAllUsers() {
@@ -31,5 +29,25 @@ export class UserService {
       })
     };
     return this.http.get(`${this.URL}/api/user`, appHeaders);
+  }
+
+  GetFollowing(username) {
+    const appHeaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT ' + this.loginService.token   // this is our token from the UserService (see Part 1)
+      })
+    };
+    return this.http.get(`${this.URL}/user/${username}/following`, appHeaders);
+  }
+
+  GetFollowers(username) {
+    const appHeaders = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT ' + this.loginService.token   // this is our token from the UserService (see Part 1)
+      })
+    };
+    return this.http.get(`${this.URL}/user/${username}/followers`, appHeaders);
   }
 }

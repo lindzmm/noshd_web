@@ -9,4 +9,11 @@
 <button (click)="newPost()" class="btn btn-primary">Add a new post</button>
 <br />
 
+<div *ngFor="let post of restPostList">
+    <h2>{{post.establishmentName}}</h2>
+    <p>{{post.postAuthor}}</p>
+    <p>{{post.pubDate}}</p>
+  <hr>
+</div>
+
 <button (click)="logout()" class="btn btn-primary">Log Out</button>

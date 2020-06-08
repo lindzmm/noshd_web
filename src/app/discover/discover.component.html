@@ -4,7 +4,7 @@
 <div>
   <h2>Users:</h2>
   <div *ngFor="let user of userList">
-    <p *ngIf="!isCurrentUser(user)">{{user.username}} <button *ngIf="!isFollowing(user)" (click)="follow(user)">Follow</button> <button *ngIf="isFollowing(user)" (click)="unfollow(user)">Unfollow</button> <br /></p>
+    <p *ngIf="!isCurrentUser(user)">{{user.username}} <button *ngIf="!isFollowing(user)" (click)="follow(user)">Follow</button> <button *ngIf="isFollowing(user)" (click)="unfollow(user)">Unfollow</button> <button (click)="goToUsersProfile(user.username)">See Profile</button> <br /></p>
   </div>
 </div>
 

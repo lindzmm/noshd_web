@@ -26,7 +26,7 @@ const routes: Routes = [
     component: NewPostComponent
   },
   {
-    path: 'profile',
+    path: 'profile/:username',
     component: ProfileComponent
   },
   {

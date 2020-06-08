@@ -21,7 +21,7 @@ export class DiscoverComponent implements OnInit {
 
   ngOnInit() {
     this.getAllUsers();
-    this.getFollowing();
+    this.getFollowing(this.loginService.username);
   }
   getAllUsers() {
     this.userService.getAllUsers()
@@ -51,22 +51,20 @@ export class DiscoverComponent implements OnInit {
   }
 
   follow(user) {
-    // todo: create follow function
     this.followingService.Follow(this.currentUser, user);
     console.log(this.currentUser.username + ' is now following ' + user.username);
   }
 
   unfollow(user) {
     for (let i = 0; i < this.followingList.length; i++) {
-      if (this.followingList[i].username === user.username){
+      if (this.followingList[i].username === user.username) {
         console.log('unfollowing ' + user.username);
         this.followingService.Unfollow(this.followingList[i].relationshipId);
       }
     }
-    // todo: create unfollow function
   }
 
-  getFollowing() {
+  /*getFollowing() {
     console.log(this.loginService.username);
     this.userService.getFollowers(this.loginService.username)
       .subscribe((data: Array<object>) => {
@@ -81,6 +79,22 @@ export class DiscoverComponent implements OnInit {
         }
         console.log(this.followingList);
       });
+  }*/
+
+  getFollowing(username) {
+    this.userService.GetFollowing(username)
+      .subscribe((data: Array<object>) => {
+        //  console.log(data);
+        let userFollowing = JSON.parse(JSON.stringify(data));
+        for (let i = 0; i < userFollowing.length; i++) {
+          let tempUser = new FollowingObject();
+          tempUser.username = userFollowing[i].following_user_username;
+          tempUser.relationshipId = userFollowing[i].id;
+          this.followingList.push(tempUser);
+        }
+        console.log(this.followingList);
+      });
+
   }
   goToDiscover() {
     this.router.navigate(['/discover']);
@@ -91,7 +105,11 @@ export class DiscoverComponent implements OnInit {
   }
 
   goToProfile() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/profile/' + this.loginService.username]);
+  }
+
+  goToUsersProfile(username) {
+    this.router.navigate(['/profile/' + username]);
   }
 
 }
