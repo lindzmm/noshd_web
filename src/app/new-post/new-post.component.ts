@@ -48,7 +48,7 @@ export class NewPostComponent implements OnInit {
   }
 
   goToProfile() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/profile/' + this.loginService.username]);
   }
 
 }
